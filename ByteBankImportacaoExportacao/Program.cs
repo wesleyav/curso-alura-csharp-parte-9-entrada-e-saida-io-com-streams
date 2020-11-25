@@ -12,6 +12,12 @@ namespace ByteBankImportacaoExportacao
     { 
         static void Main(string[] args) 
         {
+            //var textoComQuebraDeLinha = "minha primeira linha \n minha segunda linha";
+
+            //Console.WriteLine(textoComQuebraDeLinha);
+
+            //Console.ReadLine();
+
             var enderecoDoArquivo = "contas.txt";
 
             var fluxoDoArquivo = new FileStream(enderecoDoArquivo, FileMode.Open);
@@ -35,11 +41,16 @@ namespace ByteBankImportacaoExportacao
 
         static void EscreverBuffer(byte[] buffer)
         {
-            foreach (var meyByte in buffer)
-            {
-                Console.Write(meyByte);
-                Console.Write(" ");
-            }
+            var utf8 = Encoding.Default;
+
+            var texto = utf8.GetString(buffer);
+            Console.Write(texto);
+
+            //foreach (var meyByte in buffer)
+            //{
+            //    Console.Write(meyByte);
+            //    Console.Write(" ");
+            //}
         }
     }
 } 
